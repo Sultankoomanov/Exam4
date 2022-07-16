@@ -8,34 +8,46 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 public class FileService {
 
-    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    private static final Path path = Paths.get("./cats.json");
 
-    public static Map<String, List<Cat>> readFile(){
+    ArrayList <Cat> cats;
+    public List<Cat> catsList;
 
-        String json;
+    public FileService() {
+        var filePath = Path.of("cats.json");
+        Gson gson = new Gson();
         try {
-            json = Files.readString(path);
+            cats = new ArrayList<>();
+            catsList = List.of(gson.fromJson(Files.readString(filePath), Cat[].class));
+            cats.addAll(catsList);
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return gson.fromJson(json, new TypeToken<Map<String, List<Cat>>>() {}.getType());
-    }
-
-    public static void writeFile(Cat[] cats){
-        String json = gson.toJson(cats);
-
-        byte[] arr = json.getBytes();
-        try {
-            Files.write(path, arr);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
+    public static FileService read() {
+        return new FileService();
+    }
 
+    public ArrayList<Cat> getCats() {
+        return cats;
+    }
+    public void addCats(Cat cat) {
+        cats.add(cat);
+
+    }
+    public void printCats() {
+        System.out.println("№   |  имя    |  возраст   |  здоровье    |  сытость   | средний уровень");
+        System.out.println("------------------------------------------------------------------------");
+        int count = 1;
+        for (Cat c : cats) {
+            System.out.printf("%s  |   %s  \t|   %s  \t|   %s  \t|   %s  \t|    %s  |\n",count, c.getName(), c.getAge(),c.getHealth(),c.getFeed(),c.getAverageLevel());
+            count++;
+        }
+    }
 }

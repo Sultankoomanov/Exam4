@@ -11,8 +11,12 @@ public class Main {
 
     private static void run() {
 
-        Map<String, List<Cat>> movieList = FileService.readFile();
-        List<Cat> cats = movieList.get("cats");
+        FileService cats;
+        cats = FileService.read();
+        cats.printCats();
 
+//        List<Cat>> movieList = FileService.readFile();
+//        List<Cat> cats = movieList.get("cats");
     }
+
 }
