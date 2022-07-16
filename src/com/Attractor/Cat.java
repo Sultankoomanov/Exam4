@@ -14,22 +14,15 @@ public class Cat {
     private boolean catEat = false;
     private boolean catVet = false;
 
-    public Action getAction() {
-        return action;
-    }
 
-    public void setAction(Action action) {
-        this.action = action;
-    }
-
-    public Cat(String name, int age, int feed, int happyLevel, int health, int averageLevel) {
-        this.name = name;
-        this.age = age;
-        this.feed = feed;
-        this.happyLevel = happyLevel;
-        this.health = health;
-        this.averageLevel = averageLevel;
-    }
+//    public Cat(String name, int age, int feed, int happyLevel, int health, int averageLevel) {
+//        this.name = name;
+//        this.age = age;
+//        this.feed = feed;
+//        this.happyLevel = happyLevel;
+//        this.health = health;
+//        this.averageLevel = averageLevel;
+//    }
 
     public String getName() {
         return name;
@@ -75,8 +68,8 @@ public class Cat {
         return averageLevel;
     }
 
-    public void setAverageLevel(int averageLevel) {
-        this.averageLevel = averageLevel;
+    public void setAverageLevel() {
+        averageLevel = (health+happyLevel+feed)/3;;
     }
 
     @Override
@@ -104,11 +97,21 @@ public class Cat {
                 '}';
     }
 
+    public void setAction(){
+        if (age <= 5) {
+            action = new Young();
+        }else if (age <= 10)  {
+            action = new Middle();
+        } else {
+            action = new Older();
+        }
+    }
+
     public void playCat() {
-        if (catPlay)
+        if (catPlay){
             System.out.println(name + " Готова к игре");
-        else {
-            action.play(this);
+        } else {
+//            action.play(this);
             System.out.println(name + " играет");
         }
         catPlay = true;
@@ -119,7 +122,7 @@ public class Cat {
             System.out.println(name + " Готов кушать");
         }
         else {
-            action.eat(this);
+//            action.eat(this);
             System.out.println(name + " кушает");
         }
         catEat = true;
@@ -130,12 +133,10 @@ public class Cat {
             System.out.println(name + "Готов посетить ветеринара");
         }
         else {
-            action.toVet(this);
+//            action.toVet(this);
             System.out.println(name + " идет к ветеринару");
         }
         catVet = true;
     }
-
-
 
 }

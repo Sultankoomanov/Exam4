@@ -10,8 +10,7 @@ public class StartCatAction {
     public void start() {
         cats = FileService.read();
         cats.printCats();
-        cats.getCats().get(2 - 1).playCat();
-//        chooseOperation();
+        chooseOperation();
     }
 
 
@@ -36,7 +35,7 @@ public class StartCatAction {
             int rnd = random.nextInt(80)+20;
 
             try {
-                Cat cat = new Cat(name,age,feed, happyLevel, health, average);
+                Cat cat = new Cat();
                 cats.addCats(cat);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -81,8 +80,7 @@ public class StartCatAction {
                     System.out.println("Вы выбрали отвести к ветеринару кота");
                     cats.printCats();
                     cats1 = chooseCat();
-                    cats.getCats().get(2 - 1).vet();
-                    System.out.println(cats.getCats().get(cats1 - 1));
+                    cats.getCats().get(cats1 - 1).vet();
                     cats.printCats();
                     chooseOperation();
                     break;
