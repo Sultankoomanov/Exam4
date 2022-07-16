@@ -1,8 +1,18 @@
 package com.Attractor;
 
+import java.util.List;
+import java.util.Map;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        run();
+    }
+
+    private static void run() {
+
+        Map<String, List<Cat>> movieList = FileService.readFile();
+        List<Cat> cats = movieList.get("cats");
+
     }
 }
