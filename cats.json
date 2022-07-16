@@ -1,0 +1,30 @@
+[
+  {
+    "id": 8321,
+    "name": "Iphone",
+    "price": 320,
+    "honorary_code": 0,
+    "state": "in-stock"
+  },
+  {
+    "id": 2311,
+    "name": "Audi",
+    "price": 450,
+    "honorary_code": 0,
+    "state": "in-stock"
+  },
+  {
+    "id": 3123,
+    "name": "Rolex",
+    "price": 292,
+    "honorary_code": 0,
+    "state": "in-stock"
+  },
+  {
+    "id": 3134,
+    "name": "Madonna",
+    "price": 430,
+    "honorary_code": 0,
+    "state": "in-stock"
+  }
+]
