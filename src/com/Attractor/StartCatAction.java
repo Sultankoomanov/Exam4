@@ -8,11 +8,10 @@ public class StartCatAction {
     public static FileService cats;
 
     public void start() {
-
         cats = FileService.read();
         cats.printCats();
-        addCat();
-
+        cats.getCats().get(2 - 1).playCat();
+//        chooseOperation();
     }
 
 
@@ -46,45 +45,69 @@ public class StartCatAction {
             cats.printCats();
         }
 
-
-
     public void chooseOperation() {
         try {
             Scanner scanner = new Scanner(System.in);
-            int scan = scanner.nextInt();
-
             System.out.println("Какое действие вы хотите совершить?");
             System.out.println("1 - Добавить кота");
             System.out.println("2 - Играть с котом");
             System.out.println("3 - Покормить кота");
             System.out.println("4 - Отвести к ветеринару");
-
+            System.out.println("5 - Выход");
+            int scan = scanner.nextInt();
             switch (scan) {
                 case 1:
-                        addCat();
-                        System.out.println("Вы добавили кота");
-                        chooseOperation();
-                        break;
-                case  2:
+                    addCat();
+                    System.out.println("Вы добавили кота");
+                    chooseOperation();
+                    break;
+                case 2:
                     System.out.println("Вы выбрали играть с котом");
                     cats.printCats();
                     int cats1 = chooseCat();
-                    cats.getCats().get(cats1 - 1).play();
-
+                    cats.getCats().get(cats1 - 1).playCat();
+                    cats.printCats();
+                    chooseOperation();
+                    break;
+                case 3:
+                    System.out.println("Вы выбрали кормить кота");
+                    cats.printCats();
+                    cats1 = chooseCat();
+                    cats.getCats().get(cats1 - 1).eat();
+                    cats.printCats();
+                    chooseOperation();
+                    break;
+                case 4:
+                    System.out.println("Вы выбрали отвести к ветеринару кота");
+                    cats.printCats();
+                    cats1 = chooseCat();
+                    cats.getCats().get(2 - 1).vet();
+                    System.out.println(cats.getCats().get(cats1 - 1));
+                    cats.printCats();
+                    chooseOperation();
+                    break;
+                case 5:
+                    break;
+                default:
+                    System.out.println("Неверно ввели");
+                    chooseOperation();
             }
+        } catch (Exception e) {
+            System.out.println("Неверно ввели!!!!");
+            chooseOperation();
         }
     }
 
     public int chooseCat() {
         try {
-            Scanner scanner = new Scanner(System.in);
-            return scanner.nextInt();
+            System.out.println("Выберите номер кота");
+            Scanner scanner1 = new Scanner(System.in);
+            return scanner1.nextInt();
         } catch (Exception e) {
             System.out.println("Неверное значение");
+            return 100;
         }
-        return 100;
     }
-
 
     }
 

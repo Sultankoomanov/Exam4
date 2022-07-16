@@ -14,6 +14,13 @@ public class Cat {
     private boolean catEat = false;
     private boolean catVet = false;
 
+    public Action getAction() {
+        return action;
+    }
+
+    public void setAction(Action action) {
+        this.action = action;
+    }
 
     public Cat(String name, int age, int feed, int happyLevel, int health, int averageLevel) {
         this.name = name;
@@ -97,35 +104,34 @@ public class Cat {
                 '}';
     }
 
-    public void play() {
-        if (catPlay) {
-            System.out.println(name + "Готова к игре");
-        }
+    public void playCat() {
+        if (catPlay)
+            System.out.println(name + " Готова к игре");
         else {
             action.play(this);
-            System.out.println(name + "играет");
+            System.out.println(name + " играет");
         }
         catPlay = true;
     }
 
     public void eat() {
-        if (catPlay) {
-            System.out.println(name + "Готова к игре");
+        if (catEat) {
+            System.out.println(name + " Готов кушать");
         }
         else {
             action.eat(this);
-            System.out.println(name + "играет");
+            System.out.println(name + " кушает");
         }
         catEat = true;
     }
 
     public void vet() {
-        if (catPlay) {
-            System.out.println(name + "Готова к игре");
+        if (catVet) {
+            System.out.println(name + "Готов посетить ветеринара");
         }
         else {
             action.toVet(this);
-            System.out.println(name + "играет");
+            System.out.println(name + " идет к ветеринару");
         }
         catVet = true;
     }
