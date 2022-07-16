@@ -15,7 +15,6 @@ import java.util.Map;
 
 public class FileService {
 
-
     ArrayList <Cat> cats;
     public List<Cat> catsList;
 
@@ -39,14 +38,13 @@ public class FileService {
     }
     public void addCats(Cat cat) {
         cats.add(cat);
-
     }
     public void printCats() {
         System.out.println("№   |  имя    |  возраст   |  здоровье    |  сытость   | средний уровень");
         System.out.println("------------------------------------------------------------------------");
         int count = 1;
         for (Cat c : cats) {
-            System.out.printf("%s  |   %s  \t|   %s  \t|   %s  \t|   %s  \t|    %s  |\n",count, c.getName(), c.getAge(),c.getHealth(),c.getFeed(),c.getAverageLevel());
+            System.out.printf("%s  |   %s  \t|   %s  \t|   %s  \t|   %s  \t    |    %s  |\n",count, c.getName(), c.getAge(),c.getHealth(),c.getFeed(),c.getAverageLevel());
             count++;
         }
     }

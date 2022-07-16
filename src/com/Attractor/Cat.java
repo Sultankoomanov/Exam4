@@ -10,6 +10,15 @@ public class Cat {
     private int health;
     private int averageLevel;
 
+    public Cat(String name, int age, int feed, int happyLevel, int health, int averageLevel) {
+        this.name = name;
+        this.age = age;
+        this.feed = feed;
+        this.happyLevel = happyLevel;
+        this.health = health;
+        this.averageLevel = averageLevel;
+    }
+
     public String getName() {
         return name;
     }
@@ -82,4 +91,7 @@ public class Cat {
                 ", averageLevel=" + averageLevel +
                 '}';
     }
+
+
+
 }
