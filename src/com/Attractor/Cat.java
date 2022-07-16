@@ -9,6 +9,11 @@ public class Cat {
     private int happyLevel;
     private int health;
     private int averageLevel;
+    private Action action;
+    private boolean catPlay = false;
+    private boolean catEat = false;
+    private boolean catVet = false;
+
 
     public Cat(String name, int age, int feed, int happyLevel, int health, int averageLevel) {
         this.name = name;
@@ -90,6 +95,39 @@ public class Cat {
                 ", health=" + health +
                 ", averageLevel=" + averageLevel +
                 '}';
+    }
+
+    public void play() {
+        if (catPlay) {
+            System.out.println(name + "Готова к игре");
+        }
+        else {
+            action.play(this);
+            System.out.println(name + "играет");
+        }
+        catPlay = true;
+    }
+
+    public void eat() {
+        if (catPlay) {
+            System.out.println(name + "Готова к игре");
+        }
+        else {
+            action.eat(this);
+            System.out.println(name + "играет");
+        }
+        catEat = true;
+    }
+
+    public void vet() {
+        if (catPlay) {
+            System.out.println(name + "Готова к игре");
+        }
+        else {
+            action.toVet(this);
+            System.out.println(name + "играет");
+        }
+        catVet = true;
     }
 
 
